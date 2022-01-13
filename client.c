@@ -40,6 +40,12 @@ static void send_str(pid_t pid, char *str)
 	send_char(pid, '\0');
 }
 
+static void success(int sig)
+{
+	(void)sig;
+	write(1, "Received PID", 13);
+}
+
 int	main(int argc, char *argv[])
 {
 	pid_t	pid;
@@ -47,7 +53,12 @@ int	main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
+		return (1);
+	}
+	if (!signal(SIGUSR1, success))
+	{
+		write(2, "Wrong PID", 10);
 		return (1);
 	}
 	pid = ft_atoi(argv[1]);
