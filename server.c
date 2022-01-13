@@ -2,11 +2,9 @@
 
 static void	sig_handler(int signum)
 {
-	static char	c;
-	static int	bits;
+	static char	c = 0xFF;
+	static int	bits = 0;
 
-	c = 0xFF;
-	bits = 0;
 	if (signum == SIGUSR1)//SIGUSR1 represents 0
 		c ^= 0x80 >> bits;
 	else if (signum == SIGUSR2)//SIUSR2 represents 1
