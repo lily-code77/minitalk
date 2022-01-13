@@ -20,7 +20,7 @@ static void	send_char(pid_t pid, char c)
 			if (j == -1)
 				exit (1);
 		}
-		usleep(3);
+		usleep(100);
 		if (bit == 0)
 			break;
 		bit --;

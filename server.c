@@ -9,7 +9,7 @@ static void	sig_handler(int signum)
 	bits = 0;
 	if (signum == SIGUSR1)//SIGUSR1 represents 0
 		c ^= 0x80 >> bits;
-	else (signum == SIGUSR2)//SIUSR2 represents 1
+	else if (signum == SIGUSR2)//SIUSR2 represents 1
 		c |= 0x80 >> bits;
 	bits ++;
 	if (bits == 8)
@@ -22,8 +22,8 @@ static void	sig_handler(int signum)
 
 int	main(void)
 {
-	ft_putnbr_fd(getpid(), 1)
-	write(1, \n, 1);
+	ft_putnbr_fd(getpid(), 1);
+	write(1, "\n", 1);
 	signal(SIGUSR1, sig_handler);
 	signal(SIGUSR2, sig_handler);
 	while (1)
