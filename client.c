@@ -70,7 +70,7 @@ int	main(int argc, char *argv[])
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	if (!signal(SIGUSR1, success))
+	if (signal(SIGUSR1, success) == SIG_ERR)
 	{
 		write(2, "Wrong PID", 10);
 		return (1);
