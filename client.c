@@ -40,10 +40,24 @@ static void send_str(pid_t pid, char *str)
 	send_char(pid, '\0');
 }
 
-static void success(int sig)
+static void success(int sig)//
 {
 	(void)sig;
 	write(1, "Received PID", 13);
+}
+
+static int	input_digits(char *input)//
+{
+	size_t	i;
+
+	i = 0;
+	while (input[i])
+	{
+		if ((input[i] >= '0' && input[i] <= '9') == 0)
+			return (0);
+		i ++;
+	}
+	return (1);
 }
 
 int	main(int argc, char *argv[])
@@ -51,7 +65,7 @@ int	main(int argc, char *argv[])
 	pid_t	pid;
 	char	*str;
 
-	if (argc != 3)
+	if (argc != 3 || input_digits(argv[2] == 0))//
 	{
 		write(2, "Error\n", 6);
 		return (1);
