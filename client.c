@@ -72,7 +72,7 @@ int	main(int argc, char *argv[])
 	}
 	if (signal(SIGUSR1, success) == SIG_ERR)
 	{
-		write(2, "Wrong PID", 10);
+		write(2, "Failed to receive PID", 21);
 		return (1);
 	}
 	pid = ft_atoi(argv[1]);
