@@ -65,7 +65,7 @@ int	main(int argc, char *argv[])
 	pid_t	pid;
 	char	*str;
 
-	if (argc != 3 || input_digits(argv[2] == 0))//
+	if (argc != 3 || input_digits(argv[1] == 0))//
 	{
 		write(2, "Error\n", 6);
 		return (1);
