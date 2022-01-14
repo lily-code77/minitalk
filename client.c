@@ -40,11 +40,11 @@ static void send_str(pid_t pid, char *str)
 	send_char(pid, '\0');
 }
 
-static void success(int sig)//
+/* static void success(int sig)//
 {
 	(void)sig;
 	write(1, "Received PID", 13);
-}
+} */
 
 static int	input_digits(char *input)//
 {
@@ -70,11 +70,11 @@ int	main(int argc, char *argv[])
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	if (signal(SIGUSR1, success) == SIG_ERR)
+	/* if (signal(SIGUSR1, success) == SIG_ERR)
 	{
 		write(2, "Failed to receive PID", 21);
 		return (1);
-	}
+	} */
 	pid = ft_atoi(argv[1]);
 	str = argv[2];
 	send_str(pid, str);
